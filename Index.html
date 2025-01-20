@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Index Preview</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>P.O.G. Group</h1>
+        <h2><i>Una mejor experiencia de vuelo</i></h2>
+        <nav class="menu">
+            <ul>
+                <li><a href="">Reserva</a></li>
+                <li><a href="">Flota</a></li>
+                <li><a href="">Servicios</a></li>
+                <li><a href="">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="carrusel">
+            <div class="carrusel-images" id="carruselImages">
+                <img src="Imagenes/Imagen1.jpg" alt="Imagen 1">
+                <img src="Imagenes/imagen2.jpg" alt="Imagen 2">
+                <img src="Imagenes/Imagen3.jpg" alt="Imagen 3">
+                <img src="Imagenes/Imagen4.jpg" alt="Imagen 4">
+                <img src="Imagenes/Imagen5.jpg" alt="Imagen 5">
+            </div>
+            <div class="carrusel-buttons">
+                <button id="prevButton">&#10094;</button>
+                <button id="nextButton">&#10095;</button>
+            </div>
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+    <script>
+        const carruselImages = document.getElementById('carruselImages');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+
+        let currentIndex = 0;
+        const totalImages = document.querySelectorAll('.carrusel-images img').length;
+
+        function updateCarrusel() {
+            const offset = -currentIndex * 100;
+            carruselImages.style.transform = `translateX(${offset}%)`;
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarrusel();
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarrusel();
+        });
+    </script>
+</body>
+</html>
